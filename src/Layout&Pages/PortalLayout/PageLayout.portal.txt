@@ -1,7 +1,7 @@
 {{ header }}
 <div class="page">
 	
-	
+	ho ho
 	<!-- Search and page links for the page -->
 	{% if portal.current_tab and portal.current_tab == "home" %}
 		<section class="help-center rounded-6">	
