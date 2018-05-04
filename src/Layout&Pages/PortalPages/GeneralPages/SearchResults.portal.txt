@@ -1,24 +1,22 @@
-<section class="main content rounded-6 min-height-on-desktop fc-solution-home" id="solutions-home">
-	<h2 class="heading">{% translate portal.knowledge_base %}</h2>
-	{% for category in portal.solution_categories %}
-		{% if category.folders_count > 0 %}
-		<div class="cs-s">
-			<h3 class="heading"> 
-				{{ category.name | link_to: category.url }} 
-			</h3>
-			<div class="cs-g-c">
-				{% for folder in category.folders %}
-					<section class="cs-g article-list">
-						<div class="list-lead">
-							{{ folder | link_to_folder_with_count }}
-						</div>
-						{{ folder | article_list:5 }}
-					</section>
-				{% else %}
-					{{ portal | filler_for_solutions }}
-				{% endfor %}
-			</div>
-		</div>	
-		{% endif %}
-	{% endfor %}
+<section class="content rounded-6 min-height-desktop fc-search-page">
+	<h2 class="heading">{% translate portal.search.results_for %} "{{ search.term | escape_once }}"</h2>	
+	{{ search | default_filters }}
+	<hr />
+	{% if search.result_count != 0 %}
+		<ul class="search-results-list">
+			{% for result in search.results %}
+			<li class="{{ result.type | downcase }}-item">				
+				<a href="{{result.url}}">{{ result.title }}</a>
+				<span class="label label-small label-light">{{ result.group }}</span>
+				<div>{{ result.desc }}</div>
+				<p class="help-text">
+					{{ result.source.created_on | short_day_with_time }}
+				</p>
+			</li>
+			{% endfor %}
+		</ul>
+		{{ search.pagination }}
+	{% else %}
+		<div class="lead">{% translate search.no_results_msg %}</div>
+	{% endif %}
 </section>
