@@ -1,8 +1,7 @@
-<section class="content main rounded-6 fc-new-ticket">
-	<h3 class="heading">{% translate ticket.submit_ticket_title %}</h3>
-  	{% snippet new_ticket_form %}
+<section id="signup-container" class="content rounded-6 main fc-signup-container">
+	<h3 class="heading"> {% translate portal.user_signup_portal %} {{ portal.name }} {% translate portal.account %} </h3>
+	{% snippet signup_form %}
 </section>
-
-<section class="sidebar content-light rounded-6 hide ticket-search" id="new-ticket-search">
-	<br />
+<section class="sidebar hide">
+	<br/>
 </section>
