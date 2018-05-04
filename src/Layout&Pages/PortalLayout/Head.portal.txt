@@ -3,7 +3,6 @@
 
 <!-- Meta information -->
 {{ meta | default_meta }}
-hi hek
 
 <!-- Responsive setting -->
 {{ portal | default_responsive_settings }}
